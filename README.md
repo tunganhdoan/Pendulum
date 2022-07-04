@@ -11,3 +11,5 @@ simulation for physics
 6. Add title to root window
 7. add root.geometry('600x400+50+50') 
 8. Center the root window in screen
+9. Tk themed widgets (Note that ttk stands for Tk themed. 
+Therefore, Tk themed widgets are the same as ttk widgets)
