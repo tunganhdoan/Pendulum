@@ -7,3 +7,4 @@ simulation for physics
 3. Import and test tkinter (with detailed comments)
 4. Insert if __name__ == "__main__". Explained in details
 - Create new python file test_main_only.py to demonstrate
+5. Delete temporary test_main_only.py and comment codes
