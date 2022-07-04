@@ -15,9 +15,11 @@ class MainFrame(ttk.Frame):
 
         def length_slider_changed(event):
             result.configure(text=get_length_value())
+
         length_label = ttk.Label(self, text="Length").grid(column=0, row=0, sticky=tk.E)
-        length_scale = ttk.Scale(self, variable=length, orient='horizontal', length=200, command=length_slider_changed).grid(column=1, row=0)
-        length_spinbox = ttk.Spinbox(self, textvariable=length, wrap=True, width=10).grid(column=2, row=0)
+        length_scale = ttk.Scale(self, variable=length, orient='horizontal', length=200, from_=0, to=50,
+                                 command=length_slider_changed).grid(column=1, row=0)
+        length_spinbox = ttk.Spinbox(self, textvariable=length, wrap=True, width=10, from_=0, to=50).grid(column=2, row=0)
 
         mass = tk.DoubleVar()
         mass_label = ttk.Label(self, text="Mass").grid(column=0, row=1, sticky=tk.E)
@@ -49,7 +51,7 @@ class MainFrame(ttk.Frame):
 
         # Results
 
-        result = ttk.Label(self,text="abc")
+        result = ttk.Label(self, text="abc")
         result.grid(column=2, row=5)
         # add padding to the frame and show it
         self.grid(padx=50, pady=50, sticky=tk.NSEW)
