@@ -9,3 +9,4 @@ simulation for physics
 - Create new python file test_main_only.py to demonstrate
 5. Delete temporary test_main_only.py and comment codes
 6. Add title to root window
+7. add root.geometry('600x400+50+50') 
