@@ -8,13 +8,19 @@ if __name__ == '__main__':
     root.geometry('1360x768+300+20')
     root.iconbitmap('./assets/pd.ico')
 
-    ttk.Label(root, text='Hi, there').pack()
+    text = tk.StringVar()
 
-    label = ttk.Label(root)
-    label['text'] = 'Hi, there' #use dictionary index
-    label.pack()
 
-    label_1 = ttk.Label(root)
-    label_1.config(text='Hi, there')
-    label_1.pack()
+    # Display a Label
+    def print_text(t):
+        text.set(t)
+
+
+    label = tk.Label(root, textvariable=text, font=('Helvetica 13 bold')).pack()
+    btn1 = ttk.Button(root, text="Button1", command=lambda: print_text("Button 1"))
+    btn1.pack(pady=10)
+    btn2 = ttk.Button(root, text="Button2", command=lambda: print_text("Button 2"))
+    btn2.pack(pady=10)
+    btn3 = ttk.Button(root, text="Button3", command=lambda: print_text("Button 3"))
+    btn3.pack(pady=10)
     root.mainloop()

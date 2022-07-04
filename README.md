@@ -22,3 +22,4 @@ Therefore, Tk themed widgets are the same as ttk widgets)
 
 - Alt-Shift Up down: move code line up and down
 - Alt+Click at the target location to add another caret.
+11. Command binding demonstration
