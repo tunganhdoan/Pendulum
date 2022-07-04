@@ -25,3 +25,4 @@ Therefore, Tk themed widgets are the same as ttk widgets)
 11. Command binding demonstration
 12. When the program is getting more complex, you can use an object-oriented programming approach to make the code more organized.
 13. Ready to build GUI content with Frame
+14. Re-organize code to smaller modules: define App in main_window.py and frame in main_frame.py
