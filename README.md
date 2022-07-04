@@ -24,3 +24,4 @@ Therefore, Tk themed widgets are the same as ttk widgets)
 - Alt+Click at the target location to add another caret.
 11. Command binding demonstration
 12. When the program is getting more complex, you can use an object-oriented programming approach to make the code more organized.
+13. Ready to build GUI content with Frame

@@ -10,21 +10,18 @@ class App(tk.Tk):
         self.geometry('1360x768+300+20')
         self.iconbitmap('./assets/pd.ico')
 
-        self.text = tk.StringVar()
 
-        label = tk.Label(self, textvariable=self.text, font=('Helvetica 13 bold')).pack()
-        self.btn1 = ttk.Button(self, text="Button1", command=lambda: self.print_text("Button 1"))
-        self.btn1.pack(pady=10)
-        self.btn2 = ttk.Button(self, text="Button2", command=lambda: self.print_text("Button 2"))
-        self.btn2.pack(pady=10)
-        self.btn3 = ttk.Button(self, text="Button3", command=lambda: self.print_text("Button 3"))
-        self.btn3.pack(pady=10)
-
-    # Display a Label
-    def print_text(self, t):
-        self.text.set(t)
-
+class MainFrame(ttk.Frame):
+    def __init__(self, container):
+        super().__init__(container)
+        options = {'padx': 5, 'pady': 5}
+        # label
+        self.label = ttk.Label(self, text='Hello, Tkinter!')
+        self.label.pack(**options)
+        # show the frame on the container
+        self.pack(**options)
 
 if __name__ == '__main__':
     app = App()
+    main_frame = MainFrame(app)
     app.mainloop()
