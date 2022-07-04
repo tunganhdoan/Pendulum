@@ -1,9 +1,13 @@
 from tkinter import Tk
+import test_main_only
+# if __name__ == '__main__':
+# It's boilerplate code that protects users from accidentally invoking the script when they didn't intend to.
+# So when the interpreter runs a module,
+# the __name__ variable will be set as  __main__ if the module that is being run is the main program.
+# But if the code is importing the module from another module,
+# then the __name__  variable will be set to that module’s name.
 
-# how to create an instance "root" that initialize a tkinter gui
-root = Tk()
-# mainloop() method will loop the gui in a predetermined rate
-# The mainloop() keeps the window visible on the screen.
-# If you don’t call the mainloop() method, the window will display and disappear immediately.
-# It will be so fast that you may not see its appearance.
-root.mainloop()
+print("File one __name__ is set to: {}" .format(__name__))
+if __name__ == '__main__':
+    root = Tk()
+    root.mainloop()
