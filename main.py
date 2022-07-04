@@ -1,26 +1,30 @@
 import tkinter as tk
 from tkinter import ttk
 
-if __name__ == '__main__':
-    root = tk.Tk()
-    root.state('zoomed')
-    root.title("Pendulum Simulation (ver:1.0)")
-    root.geometry('1360x768+300+20')
-    root.iconbitmap('./assets/pd.ico')
 
-    text = tk.StringVar()
+class App(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.state('zoomed')
+        self.title("Pendulum Simulation (ver:1.0)")
+        self.geometry('1360x768+300+20')
+        self.iconbitmap('./assets/pd.ico')
 
+        self.text = tk.StringVar()
+
+        label = tk.Label(self, textvariable=self.text, font=('Helvetica 13 bold')).pack()
+        self.btn1 = ttk.Button(self, text="Button1", command=lambda: self.print_text("Button 1"))
+        self.btn1.pack(pady=10)
+        self.btn2 = ttk.Button(self, text="Button2", command=lambda: self.print_text("Button 2"))
+        self.btn2.pack(pady=10)
+        self.btn3 = ttk.Button(self, text="Button3", command=lambda: self.print_text("Button 3"))
+        self.btn3.pack(pady=10)
 
     # Display a Label
-    def print_text(t):
-        text.set(t)
+    def print_text(self, t):
+        self.text.set(t)
 
 
-    label = tk.Label(root, textvariable=text, font=('Helvetica 13 bold')).pack()
-    btn1 = ttk.Button(root, text="Button1", command=lambda: print_text("Button 1"))
-    btn1.pack(pady=10)
-    btn2 = ttk.Button(root, text="Button2", command=lambda: print_text("Button 2"))
-    btn2.pack(pady=10)
-    btn3 = ttk.Button(root, text="Button3", command=lambda: print_text("Button 3"))
-    btn3.pack(pady=10)
-    root.mainloop()
+if __name__ == '__main__':
+    app = App()
+    app.mainloop()
