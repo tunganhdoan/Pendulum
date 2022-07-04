@@ -13,3 +13,12 @@ simulation for physics
 8. Center the root window in screen
 9. Tk themed widgets (Note that ttk stands for Tk themed. 
 Therefore, Tk themed widgets are the same as ttk widgets)
+10. Tkinter allows you to set the options of a widget using one of the following ways:
+- At widget creation, using **keyword arguments**.
+- After widget creation, using a **dictionary index**.
+- And use the **config()** method with keyword attributes.
+
+####  Tips: 
+
+- Alt-Shift Up down: move code line up and down
+- Alt+Click at the target location to add another caret.

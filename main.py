@@ -8,6 +8,13 @@ if __name__ == '__main__':
     root.geometry('1360x768+300+20')
     root.iconbitmap('./assets/pd.ico')
 
-    tk.Label(root, text='Classic Label').pack()
-    ttk.Label(root, text='Themed Label').pack()
+    ttk.Label(root, text='Hi, there').pack()
+
+    label = ttk.Label(root)
+    label['text'] = 'Hi, there' #use dictionary index
+    label.pack()
+
+    label_1 = ttk.Label(root)
+    label_1.config(text='Hi, there')
+    label_1.pack()
     root.mainloop()
