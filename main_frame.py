@@ -49,9 +49,27 @@ class MainFrame(ttk.Frame):
         # Position image
         label1.place(x=600, y=50)
 
+        # Create a Tkinter variable
+        dropdown_value = tk.StringVar(self)
+
+        # Dictionary with options
+        choices = {'Small angles', 'Euler', 'Improved Euler', 'RK4'}
+        dropdown_value.set('Small angles')  # set the default option
+
+        popupMenu = ttk.OptionMenu(self, dropdown_value, *choices)
+        ttk.Label(self, text="Choose a method").grid(row=6, column=0)
+        popupMenu.grid(row=6, column=1)
+
+        # on change dropdown value
+        def change_dropdown(*args):
+            print(dropdown_value.get())
+
+        # link function to change dropdown
+        dropdown_value.trace('w', change_dropdown)
+
         # Results
 
         result = ttk.Label(self, text="abc")
-        result.grid(column=2, row=5)
+        result.grid(column=2, row=10)
         # add padding to the frame and show it
         self.grid(padx=50, pady=50, sticky=tk.NSEW)
