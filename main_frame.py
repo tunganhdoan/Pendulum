@@ -2,6 +2,9 @@ import tkinter as tk
 from tkinter import ttk
 
 from PIL import Image, ImageTk
+import matplotlib.pyplot as plt
+import matplotlib.animation as animation
+import numpy as np
 
 
 class MainFrame(ttk.Frame):
@@ -71,5 +74,8 @@ class MainFrame(ttk.Frame):
 
         result = ttk.Label(self, text="abc")
         result.grid(column=2, row=10)
+
+        # Initial angular displacement (rad), tangential velocity (m.s-1)
+        theta0, v0 = np.radians(60), 0
         # add padding to the frame and show it
         self.grid(padx=50, pady=50, sticky=tk.NSEW)
