@@ -26,6 +26,10 @@ class MainFrame(ttk.Frame):
             initial_angle.set(round(initial_angle.get()))
             renew_calculation()
 
+        def initial_velocity_slider_changed(event):
+            initial_velocity.set(round(initial_velocity.get()))
+            renew_calculation()
+
         def time_step_slider_changed(event):
             time_step.set(round(time_step.get(), 3))
             renew_calculation()
@@ -35,6 +39,7 @@ class MainFrame(ttk.Frame):
             m = mass.get()
             g = gravity.get()
             theta = initial_angle.get()
+            v = initial_velocity.get()
             dt = time_step.get()
             tharm = 2 * np.pi * np.sqrt(length.get() / gravity.get())
 
@@ -71,12 +76,20 @@ class MainFrame(ttk.Frame):
         initial_angle_spinbox = ttk.Spinbox(self, textvariable=initial_angle, wrap=True, width=10, from_=1,
                                             to=360, increment=1).grid(column=2, row=3)
 
+        initial_velocity = tk.DoubleVar()
+        initial_velocity.set(3.0)
+        initial_angle_label = ttk.Label(self, text="Initial Angular Velocity").grid(column=0, row=4, sticky=tk.E)
+        initial_angle_scale = ttk.Scale(self, variable=initial_velocity, orient='horizontal', length=200, from_=0, to=360,
+                                        command=initial_velocity_slider_changed).grid(column=1, row=4)
+        initial_angle_spinbox = ttk.Spinbox(self, textvariable=initial_velocity, wrap=True, width=10, from_=1,
+                                            to=360, increment=1).grid(column=2, row=4)
+
         time_step = tk.DoubleVar(value=0.05)
-        time_step_label = ttk.Label(self, text="Time Step").grid(column=0, row=4, sticky=tk.E)
+        time_step_label = ttk.Label(self, text="Time Step").grid(column=0, row=5, sticky=tk.E)
         time_step_scale = ttk.Scale(self, variable=time_step, orient='horizontal', length=200, from_=0.001, to=0.1,
-                                    command=time_step_slider_changed).grid(column=1, row=4)
+                                    command=time_step_slider_changed).grid(column=1, row=5)
         time_step_spinbox = ttk.Spinbox(self, textvariable=time_step, wrap=True, width=10, increment=0.001, from_=0.001, to=0.1).grid(
-            column=2, row=4)
+            column=2, row=5)
 
         # Create a photoimage object of the image in the path
         image1 = Image.open("images/ani_pen.gif")
