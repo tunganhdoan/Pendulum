@@ -34,11 +34,11 @@ class MainFrame(ttk.Frame):
         mass_spinbox = ttk.Spinbox(self, textvariable=mass, wrap=True, width=10).grid(column=2, row=1)
 
         gravity = tk.DoubleVar()
-        gravity.set(1.0)
+        gravity.set(9.8)
         gravity_label = ttk.Label(self, text="Gravity").grid(column=0, row=2, sticky=tk.E)
-        gravity_scale = ttk.Scale(self, variable=gravity, orient='horizontal', length=200, from_=1, to=50,
+        gravity_scale = ttk.Scale(self, variable=gravity, orient='horizontal', length=200, from_=1, to=20,
                                   command=gravity_slider_changed).grid(column=1, row=2)
-        gravity_spinbox = ttk.Spinbox(self, textvariable=gravity, wrap=True, width=10, from_=1, to=50).grid(column=2,
+        gravity_spinbox = ttk.Spinbox(self, textvariable=gravity, wrap=True, width=10, from_=1, to=20).grid(column=2,
                                                                                                             row=2)
 
         initial_angle_label = ttk.Label(self, text="Initial Angle").grid(column=0, row=3, sticky=tk.E)
