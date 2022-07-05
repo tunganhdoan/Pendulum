@@ -3,6 +3,16 @@ from tkinter import ttk
 
 import numpy as np
 from PIL import Image, ImageTk
+import scipy.integrate as integrate
+import matplotlib
+
+matplotlib.use('TkAgg')
+
+from matplotlib.figure import Figure
+from matplotlib.backends.backend_tkagg import (
+    FigureCanvasTkAgg,
+    NavigationToolbar2Tk
+)
 
 
 class MainFrame(ttk.Frame):
@@ -12,6 +22,10 @@ class MainFrame(ttk.Frame):
 
         def length_slider_changed(event):
             length.set(round(length.get(),1))
+            renew_calculation()
+
+        def length_spinbox_changed():
+            length.set(round(length.get(), 1))
             renew_calculation()
 
         def gravity_slider_changed(event):
@@ -38,17 +52,33 @@ class MainFrame(ttk.Frame):
             l = length.get()
             m = mass.get()
             g = gravity.get()
-            theta = initial_angle.get()
-            v = initial_velocity.get()
+            theta_0 = initial_angle.get()
+            omega_0 = initial_velocity.get()
             dt = time_step.get()
-            tharm = 2 * np.pi * np.sqrt(length.get() / gravity.get())
+            t = np.arange(0,20,dt)
+            sim_points = len(t)
+            index = np.arange(0,sim_points,1)
+            period = 2 * np.pi * np.sqrt(l / g)
+            theta = theta_0*np.cos(np.sqrt(g / l)*t)
+
+
+            figure = Figure(figsize=(6, 4), dpi=100)
+            axes = figure.add_subplot()
+            axes.plot(t, theta, 'g', label='plot')
+            axes.set_title('Harmonic motion')
+            axes.set_xlabel('Time')
+            # create FigureCanvasTkAgg object
+            figure_canvas = FigureCanvasTkAgg(figure, master=self)
+            figure_canvas.draw()
+            # create axes
+            figure_canvas.get_tk_widget().grid(column=5,row=8)
 
         length = tk.DoubleVar()
         length.set(1.0)
         length_label = ttk.Label(self, text="Length").grid(column=0, row=0, sticky=tk.E)
         length_scale = ttk.Scale(self, variable=length, orient='horizontal', length=200, from_=1, to=50,
                                  command=length_slider_changed).grid(column=1, row=0)
-        length_spinbox = ttk.Spinbox(self, textvariable=length, wrap=True, width=10, from_=1, to=50, format="%.2f" ).grid(column=2,
+        length_spinbox = ttk.Spinbox(self, textvariable=length, wrap=True, width=10, from_=1, to=50, command=length_spinbox_changed).grid(column=2,
                                                                                                           row=0)
 
         mass = tk.DoubleVar()
@@ -99,7 +129,7 @@ class MainFrame(ttk.Frame):
         label1.image = place_holder
 
         # Position image
-        label1.place(x=600, y=50)
+        #label1.place(x=600, y=50)
 
         # Create a Tkinter variable
         dropdown_value = tk.StringVar(self)
